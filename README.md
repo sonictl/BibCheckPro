@@ -3,6 +3,17 @@ Assistance with enhancements, feature requests and bug fixes are all very welcom
 
 Any Pull Rrequest will be reviewed promptly.
 
+## Changes on this fork
+
+在实际的使用中，经常遇到的一个问题是，一种论文（比如article）的bib 条目中，所包含的域并不一致。比如article1包含了"题目","作者","期刊"和"年"；article2却包含了"题目","作者","年"和"页码"。blabla...这会导致我们在开始使用biblatex_check.py之前，进行配置的时候，无所适从。
+
+In practice, one of the problems we often encounter is that the bib entries of a paper (e.g. article) do not contain the same fields. For example, article1 contains "title", "author", "journal" and "year", while article2 contains "title", "author", "year" and "page". blabla...
+This will cause us to be at a loss when configuring biblatex_check.py before we start using it.
+
+**We need a piece of code to help us get the so-called list of 'certain required fields'.**
+
+Then we can use biblatex_check.py to check if ==certain required fields== are available.
+
 ---
 
 BibLatex-Check
