@@ -12,7 +12,7 @@ This will cause us to be at a loss when configuring biblatex_check.py before we 
 
 **We need a piece of code to help us get the so-called list of 'certain required fields'.**
 
-Then we can use biblatex_check.py to check if ==certain required fields== are available.
+Then we can use biblatex_check.py to check if <u>certain required fields</u> are available.
 
 ---
 
