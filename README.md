@@ -3,40 +3,6 @@ Assistance with enhancements, feature requests and bug fixes are all very welcom
 
 Any Pull Rrequest will be reviewed promptly.
 
-## Changes on this fork
-
-### 1. field_check.py
-在实际的使用中，经常遇到的一个问题是，一种论文（比如article）的bib 条目中，所包含的域并不一致。比如article1包含了"题目","作者","期刊"和"年"；article2却包含了"题目","作者","年"和"页码"。blabla...这会导致我们在开始使用biblatex_check.py之前，进行配置的时候，无所适从。
-
-我们需要一段代码（增加的`field_check.py`）来辅助我们得到所谓的list of 'certain required fields'.
-
-In practice, one of the problems we often encounter is that the bib entries of a paper (e.g. article) do not contain the same fields. For example, article1 contains "title", "author", "journal" and "year", while article2 contains "title", "author", "year" and "page". blabla...
-This will cause us to be at a loss when configuring biblatex_check.py before we start using it.
-
-**We need a piece of code, i.e. `field_check.py`, to help us get the so-called list of 'certain required fields'.**
-
-Then we can use biblatex_check.py to check if `certain required fields` are available.
-
-#### usage:
-
-`./field_check.py -b tests/input.bib`
-
-### 2. field_filter.py
-我们利用field_check.py检查所有的bib条目后，发现每个条目下的field并不一致。比如，有的多了address field，有的少了publisher field。
-`field_filter.py` 就是帮助我们仅仅按照需要来保留field. 去掉那些不需要的field.
-**使用`field_filter.py` 之前，需要进入代码内部进行配置，配置 line40 及以后的代码，以按照需要来保留field.**
-
-After checking all the bib entries with `field_check.py` and `biblatex_check.py`, we found that the fields under each bib item are not consistent. For example, some have `address` field while some have no `publisher` field. 
-
-`field_filter.py` helps to keep those fields only as configured. And remove the fields that are not needed. 
-
-Before using `field_filter.py`, you need to go inside the code and configure line43 and later few lines.
-
-#### usage:
-`./field_filter.py -b tests/input_real.bib -o bib_fieldFilter_output.bib`
-
----
-
 BibLatex-Check
 ==============
 
@@ -80,6 +46,45 @@ Specify these when calling the script.
 See `./biblatex_check.py -h` for basic help.
 
 If your getting an environment error, try using `python ./biblatex_check.py` or `python3 ./biblatex_check.py` depending on your OS.
+
+## Why Pro? Changes on this fork
+
+### 1. field_check.py
+
+在实际的使用中，经常遇到的一个问题是，一种论文（比如article）的bib 条目中，所包含的域并不一致。比如article1包含了"题目","作者","期刊"和"年"；article2却包含了"题目","作者","年"和"页码"。blabla...这会导致我们在开始使用`biblatex_check.py`之前，进行配置的时候，无所适从。
+
+我们需要一段代码（增加的`field_check.py`）来辅助我们得到所谓的list of 'certain required fields'.
+
+In practice, one of the problems we often encounter is that the bib entries of a paper (e.g. article) do not contain the same fields. For example, article1 contains "title", "author", "journal" and "year", while article2 contains "title", "author", "year" and "page". blabla...
+This will cause us to be at a loss when configuring `biblatex_check.py` before using it.
+
+**We need a piece of code, i.e. `field_check.py`, to help us get the so-called list of 'certain required fields'.**
+
+Then we can use biblatex_check.py to check if `certain required fields` are available.
+
+#### usage:
+
+`./field_check.py -b tests/input.bib`
+
+### 2. field_filter.py
+
+我们利用`field_check.py`检查所有的bib条目后，发现每个条目下的field并不一致。比如，有的多了address field，有的少了publisher field。
+`field_filter.py` 就是帮助我们仅仅按照需要来保留field. 去掉那些不需要的field.
+**使用`field_filter.py` 之前，需要进入代码内部进行配置，配置 line40 及以后的代码，以按照需要来保留field.**
+
+After checking all the bib entries with `field_check.py` and `biblatex_check.py`, we found that the fields under each bib item are not consistent. For example, some have `address` field while some have no `publisher` field. 
+
+`field_filter.py` helps to keep those fields only as configured. And remove the fields that are not needed. 
+
+Before using `field_filter.py`, you need to go inside the code and configure line43 and later few lines.
+
+#### usage:
+
+`./field_filter.py -b tests/input_real.bib -o bib_fieldFilter_output.bib`
+
+---
+
+
 
 ## Alternatives
 
