@@ -1,11 +1,12 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 This is the sister code for 'field_check.py'
 This code filters out the redundant field for bib items.
 
-About implementation, this time, I read data into a construction for processing.
-
+Usage:
+  configure in line43-60 before running
+  ./field_filter.py -b tests/input_real.bib -o filter_output.bib
 
 """
 import string
@@ -19,7 +20,7 @@ usage = sys.argv[
 parser = OptionParser(usage)
 
 parser.add_option("-b", "--bib", dest="bibFile",
-                  help="Bib File", metavar="input.bib", default="input.bib")
+                  help="Bib File", metavar="input.bib", default="input_real.bib")
 
 parser.add_option("-o", "--output", dest="outputFile",
                   help="bib Output File after filtered", metavar="filter_output.bib", default="filter_output.bib")
@@ -81,9 +82,10 @@ if options.outputFile:
 
 # === by types, check the fileds' intersection and unionSet
 lines_write = []
+currentType = ''
 for type_i in set_bibType:
 
-    print('For type: [[ ', type_i,  ' ]], check the fields\' intersec and Union' )
+    print('For type: [[ ', type_i,  ' ]], filter the fields and remain:', field_remain_dict[type_i] )
 
     '''============>>>> section of loop on each type =========='''
     lastId = ''  # for comparison for triggering between current ID and new ID.
@@ -97,7 +99,7 @@ for type_i in set_bibType:
             currentId = linee.split("{")[1].rstrip(",\n")
             currentType = linee.split("{")[0].strip("@ ")
 
-        if currentType == type_i:
+        if currentType!='' and currentType == type_i:
             if linee.startswith("@"):
                 # fo.write(line)
                 lines_write.append(line)
@@ -121,3 +123,5 @@ for i_line in range(len(lines_write)):
             # print(lines_write[i_line])
 
 fo.writelines(lines_write)
+
+print('\nFilter finished! The result is saved at:', options.outputFile, end='\n\n')
