@@ -1,7 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 check the fields of each bib item under diff types of bibitems.
+usage:
+  ./field_check.py -b tests/input.bib
 
 """
 import string
@@ -10,8 +12,8 @@ import sys
 from optparse import OptionParser
 
 # Parse options
-usage = sys.argv[
-    0] + " [-b|--bib=<input.bib>] [-h|--help]"
+usage = sys.argv[0] + " [-b|--bib=<input.bib>] [-h|--help]"
+
 parser = OptionParser(usage)
 
 parser.add_option("-b", "--bib", dest="bibFile",
@@ -37,9 +39,6 @@ for line in fIn:
         set_bibType.add(currentType)
 
 print('Types of bib items contained in this file: ', set_bibType)
-
-# === sort the bib by types ===
-# todo
 
 # === by types, check the fileds' intersection and unionSet
 for type_i in set_bibType:
@@ -74,7 +73,7 @@ for type_i in set_bibType:
     interSecFields = list_field[0].intersection(*list_field)
     unionFields = list_field[0].union(*list_field)
 
-    print('For Type ', type_i, '. The intersection of fields are:', interSecFields, \
+    print('For Type ', type_i, '. The intersection of fields are:', interSecFields,
           '\n                     The union of fields are:', unionFields
           )
     '''<<<<<<<========== section of loop on each type =========='''
