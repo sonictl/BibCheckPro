@@ -6,7 +6,7 @@ This code filters out the redundant field for bib items.
 
 Usage:
   configure in line43-60 before running
-  ./field_filter.py -b tests/input_real.bib -o filter_output.bib
+  ./field_filter.py -b tests/input_real.bib -o output/filter_output.bib
 
 """
 import string
@@ -16,14 +16,14 @@ from optparse import OptionParser
 
 # Parse options
 usage = sys.argv[
-    0] + " [-b|--bib=<input.bib>]  [-o|--output=<filter_output.bib>]  [-h|--help]"
+    0] + " [-b|--bib=<input.bib>]  [-o|--output=<output/filter_output.bib>]  [-h|--help]"
 parser = OptionParser(usage)
 
 parser.add_option("-b", "--bib", dest="bibFile",
                   help="Bib File", metavar="input.bib", default="input_real.bib")
 
 parser.add_option("-o", "--output", dest="outputFile",
-                  help="bib Output File after filtered", metavar="filter_output.bib", default="filter_output.bib")
+                  help="bib Output File after filtered", metavar="output/filter_output.bib", default="output/filter_output.bib")
 
 (options, args) = parser.parse_args()
 
@@ -56,6 +56,7 @@ field_remain_dict['inproceedings']  = {'pages',
 field_remain_dict['article']        = {'journal',
                                        'pages',
                                        'volume',
+                                       'number',
                                        'title',
                                        'year',
                                        'author'}

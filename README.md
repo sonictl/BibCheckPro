@@ -27,7 +27,7 @@ The html output is tested with Firefox and Chrome, but the current version does 
 
 Just copy the file into a directory with write permission, then run the script
 
-	./biblatex_check.py <-b input.bib> [-a input.aux] [-o output.html]
+	./biblatex_check.py <-b input.bib> [-a input.aux] [-o output/output.html]
 
 If you provide the additional aux file (created when compiling a tex document), then the check of the bib file is restricted to only those entries that are really cited in the tex document.
 
@@ -80,7 +80,7 @@ Before using `field_filter.py`, you need to go inside the code and configure lin
 
 #### usage:
 
-`./field_filter.py -b tests/input_real.bib -o bib_fieldFilter_output.bib`
+`./field_filter.py -b tests/input_real.bib -o output/bib_fieldFilter_output.bib`
 
 ---
 

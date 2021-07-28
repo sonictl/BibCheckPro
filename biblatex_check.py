@@ -32,11 +32,13 @@ libraries = [("Scholar", "http://scholar.google.de/scholar?hl=en&q="),
 requiredFields = {
                   # "article": ["author", "title", "journaltitle/journal", "year/date"],
                   # "article": ["author", "title", "journaltitle/journal", "year/date", "volume", "pages", "issn/isbn"],
-                  "article": ["author", "title", "journaltitle/journal", "year/date", "volume", "pages"],
+                  "article": ["author", "title", "journaltitle/journal", "year/date", "volume", "number","pages"],
+
                   "book": ["author", "title", "year/date"],
                   # "inproceedings": ["author", "title", "booktitle", "year/date"],
                   #"inproceedings": ["author", "title", "booktitle", "year/date", "series", "issn/isbn", "pages", "publisher"],
                   "inproceedings": ["author", "title", "booktitle", "year/date", "pages"],
+
                   "mvbook": "book",
                   "inbook": ["author", "title", "booktitle", "year/date"],
                   "bookinbook": "inbook",
@@ -82,7 +84,7 @@ from optparse import OptionParser
 
 # Parse options
 usage = sys.argv[
-    0] + " [-b|--bib=<input.bib>] [-a|--aux=<input.aux>] [-o|--output=<output.html>] [-v|--view] [-h|--help]"
+    0] + " [-b|--bib=<input.bib>] [-a|--aux=<input.aux>] [-o|--output=<output/output.html>] [-v|--view] [-h|--help]"
 
 parser = OptionParser(usage)
 
@@ -93,7 +95,7 @@ parser.add_option("-a", "--aux", dest="auxFile",
                   help="Aux File", metavar="input.aux", default="references.aux")
 
 parser.add_option("-o", "--output", dest="htmlOutput",
-                  help="HTML Output File", metavar="output.html")
+                  help="HTML Output File", metavar="output/output.html")
 
 parser.add_option("-v", "--view", dest="view", action="store_true",
                   help="Open in Browser")
