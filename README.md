@@ -34,13 +34,14 @@ After checking all the bib entries with `field_check.py` and `biblatex_check.py`
 
 Before using `field_filter.py`, you need to go inside the code and configure line43 and later few lines.
 
+In case references are not consistent. such as: The first letters of journal names and conferences should be capitalized.
 #### usage:
 
 `./field_filter.py -b tests/input_real.bib -o output/bib_fieldFilter_output.bib`
 
-### todo: 
+Use `-t yes` as titlecase switch to format the journal name as title case.
 
-In case references are not consistent. such as: The first letters of journal names and conferences should be capitalized.
+`./field_filter.py -b tests/input_real.bib -o output/bib_fieldFilter_output.bib -t yes`
 
 ---
 

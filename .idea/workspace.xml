@@ -1,4 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="699e4906-0913-4c4a-a1a0-6d1695748698" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/count_authors.py" beforeDir="false" afterPath="$PROJECT_DIR$/count_authors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/field_check.py" beforeDir="false" afterPath="$PROJECT_DIR$/field_check.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/field_filter.py" beforeDir="false" afterPath="$PROJECT_DIR$/field_filter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/input.bib" beforeDir="false" afterPath="$PROJECT_DIR$/input/input.bib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/input_real.bib" beforeDir="false" afterPath="$PROJECT_DIR$/input/input_real.bib" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1vu1JaqVmX5ty7Ahe86NgrWUuKl" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="699e4906-0913-4c4a-a1a0-6d1695748698" name="Default Changelist" comment="" />
+      <created>1628939628343</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1628939628343</updated>
+      <workItem from="1628939629535" duration="441000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
 </project>

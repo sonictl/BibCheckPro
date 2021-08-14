@@ -18,7 +18,7 @@
 
 
 Usage:
-  ./count_authors.py -b tests/input_real.bib
+  ./count_authors.py -b input/input_real.bib
 '''
 
 import sys
@@ -27,7 +27,7 @@ from optparse import OptionParser
 
 # Parse options
 usage = sys.argv[
-    0] + " [-b|--bib=<input.bib>] [-o|--output=<output/filter_output.bib>]  [-h|--help]"
+    0] + " [-b|--bib=<input/input.bib>] [-o|--output=<output/filter_output.bib>]  [-h|--help]"
 
 parser = OptionParser(usage)
 

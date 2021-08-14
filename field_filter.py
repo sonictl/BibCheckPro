@@ -6,7 +6,7 @@ This code filters out the redundant field for bib items.
 
 Usage:
   configure in line43-60 before running
-  ./field_filter.py -b tests/input_real.bib -o output/filter_output.bib
+  ./field_filter.py -b input/input_real.bib -o output/filter_output.bib
 
 """
 import string
@@ -18,7 +18,7 @@ from titlecase import titlecase    # pip install titlecase, for title into case 
 
 # Parse options
 usage = sys.argv[
-    0] + " [-b|--bib=<input.bib>]  [-o|--output=<output/filter_output.bib>] [-t|--titlecase=<yes/no>] [-h|--help]"
+    0] + " [-b|--bib=<input/input.bib>]  [-o|--output=<output/filter_output.bib>] [-t|--titlecase=<yes/no>] [-h|--help]"
 parser = OptionParser(usage)
 
 parser.add_option("-b", "--bib", dest="bibFile",

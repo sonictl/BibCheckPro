@@ -3,7 +3,7 @@
 """
 check the fields of each bib item under diff types of bibitems.
 usage:
-  ./field_check.py -b tests/input.bib
+  ./field_check.py -b input/input.bib
 
 """
 import string
@@ -12,7 +12,7 @@ import sys
 from optparse import OptionParser
 
 # Parse options
-usage = sys.argv[0] + " [-b|--bib=<input.bib>] [-h|--help]"
+usage = sys.argv[0] + " [-b|--bib=<input/input.bib>] [-h|--help]"
 
 parser = OptionParser(usage)
 
