@@ -13,10 +13,12 @@ import string
 import re
 import sys
 from optparse import OptionParser
+from titlecase import titlecase    # pip install titlecase, for title into case proper.
+
 
 # Parse options
 usage = sys.argv[
-    0] + " [-b|--bib=<input.bib>]  [-o|--output=<output/filter_output.bib>]  [-h|--help]"
+    0] + " [-b|--bib=<input.bib>]  [-o|--output=<output/filter_output.bib>] [-t|--titlecase=<yes/no>] [-h|--help]"
 parser = OptionParser(usage)
 
 parser.add_option("-b", "--bib", dest="bibFile",
@@ -24,6 +26,9 @@ parser.add_option("-b", "--bib", dest="bibFile",
 
 parser.add_option("-o", "--output", dest="outputFile",
                   help="bib Output File after filtered", metavar="output/filter_output.bib", default="output/filter_output.bib")
+
+parser.add_option("-t", "--titlecase", dest="if_titlecase",
+                  help="if titlecase the name of journal/proceedings: yes or no (default)", metavar="if title case", default='no')
 
 (options, args) = parser.parse_args()
 
@@ -51,7 +56,8 @@ field_remain_dict['inproceedings']  = {'pages',
                                        'title',
                                        'year',
                                        'author',
-                                       'booktitle'}
+                                       'booktitle',
+                                       'publisher'}
 
 field_remain_dict['article']        = {'journal',
                                        'pages',
@@ -60,6 +66,8 @@ field_remain_dict['article']        = {'journal',
                                        'title',
                                        'year',
                                        'author'}
+
+field_titlecase = ['journal', 'booktitle', 'institution']   # the fields that need to be converted into title case.
 
 '''<<<< configure the fields that need to retain for each type of bib item <<<<<<<<'''
 
@@ -82,7 +90,7 @@ if options.outputFile:
     fo = open(options.outputFile, 'w', encoding="utf8")
 
 # === by types, check the fileds' intersection and unionSet
-lines_write = []
+lines_write = []  # lines to write into file
 currentType = ''
 for type_i in set_bibType:
 
@@ -92,25 +100,30 @@ for type_i in set_bibType:
     lastId = ''  # for comparison for triggering between current ID and new ID.
     field_dict = {}
 
-    fIn = open(options.bibFile, 'r', encoding="utf8")
+    fIn = open(options.bibFile, 'r', encoding="utf8")   # opening file for each loop
     for line in fIn:
         linee = line.strip("\n")
+        linee = linee.replace(" = ", "=")
 
         if linee.startswith("@"):
             currentId = linee.split("{")[1].rstrip(",\n")
             currentType = linee.split("{")[0].strip("@ ")
 
-        if currentType!='' and currentType == type_i:
-            if linee.startswith("@"):
-                # fo.write(line)
+        if currentType!='' and currentType == type_i:   # carding by type_i
+            if linee.startswith("@"):   # line of bibID
                 lines_write.append(line)
-            elif "=" in linee:
+            elif "=" in linee:          # lines of bib contents
                 field = linee.split("=")[0].strip().lower()
-                if field in field_remain_dict[currentType]:
-                    # fo.write(line)
+                ''' upper case the journal name, reconstruct the line >>>> '''
+                if (options.if_titlecase == 'yes') and (field in field_titlecase):
+                    assert ',' in linee, 'The tail of this line is not \',\'! ' + linee
+                    field_string = linee.split("=")[1].strip('{').strip('},')
+                    field_string = titlecase(field_string)    # upper case the letters that meets title case req.
+                    line = '  ' + field + '={' + field_string + '},\n'   # construct the line with titlecased string
+                ''' <<< upper case the journal name: '''
+                if field in field_remain_dict[currentType]:  # if field in remaining list,
                     lines_write.append(line)
             else:
-                # fo.write(line)
                 lines_write.append(line)
 
     '''<<<<<<<========== section of loop on each type =========='''
@@ -119,9 +132,7 @@ for type_i in set_bibType:
 for i_line in range(len(lines_write)):
     if lines_write[i_line] != '\n':
         if lines_write[i_line].strip("\n")[-1] == ',' and lines_write[i_line+1][0] == '}':
-            # print(lines_write[i_line], end= ' >> ')
             lines_write[i_line] = lines_write[i_line][:-2] + '\n'
-            # print(lines_write[i_line])
 
 fo.writelines(lines_write)
 
